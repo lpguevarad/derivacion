@@ -4,17 +4,17 @@
 double f(double x);
 double fderivforward(double x, double h);
 double fderivrichardsonforward(double x, double h);
-
+double df(double x);
 
 int main()
   
 {
-  double x = M_PI/3.0;
+  double x = M_PI/4.0;
   double h = 0.1;
  
   {
-    for ( x = 0; x <= 8;x+=0.1){
-      std::printf ("%25.16e\t%25.16e\t%25.16e\n", x , f(x) , fderivrichardsonforward(x,h));
+    for ( h = 1e-5; h <=1;h+=0.01){
+      std::printf ("%25.16e\t%25.16e\t%25.16e\t%25.16e\n", h , df(x) ,fderivforward(x,h) , fderivrichardsonforward(x,h));
   }
 
   }
@@ -26,6 +26,12 @@ double f(double x)
 {
   return std::sin(x);
 }
+
+double df(double x)
+{
+  return std::cos(x);
+}
+
 
 double fderivforward(double x, double h)
 {
